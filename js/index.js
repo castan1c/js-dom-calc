@@ -55,13 +55,15 @@ function equalOnclick (e) {
 function checkDisplayValue() {
 //divide by 0    
 if(display.value.includes('/'))
-    if(display.value.charAt(display.value.indexOf('/')+1) === '0') {
+    //display.value.split(opera)
+    if(display.value.charAt(display.value.indexOf('/') + 1) === '0') {
     alert ('Can not divide by 0!');
     return false;
     }
 //more then one .
     else return true;
 //wrong brackets
+return true;
 }
 //clear
 const clearButton = document.createElement('button');
