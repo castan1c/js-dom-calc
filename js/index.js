@@ -48,7 +48,20 @@ actions.appendChild(equalButton);
 equalButton.addEventListener('click', equalOnclick);
 function equalOnclick (e) {
     e.preventDefault();
+    if(checkDisplayValue()){
     display.value=eval(display.value);
+    }
+}
+function checkDisplayValue() {
+//divide by 0    
+if(display.value.includes('/'))
+    if(display.value.charAt(display.value.indexOf('/')+1) === '0') {
+    alert ('Can not divide by 0!');
+    return false;
+    }
+//more then one .
+    else return true;
+//wrong brackets
 }
 //clear
 const clearButton = document.createElement('button');
