@@ -1,7 +1,7 @@
 //digits
 const digitButton = [];
 const digits = document.querySelector('.digits');
-let display = document.querySelector('.display');
+const display = document.querySelector('.display');
 function addValueOnCLick(e) {
         e.preventDefault();
         display.value+=e.target.innerText;
@@ -25,13 +25,11 @@ function addOperationOnCLick(e) {
 function checkDisplayOperation() {
     return operationsStr.includes(display.value.charAt(display.value.length-1)); 
 }
-
-
 for (let i = 0; i<operationsStr.length; i++) {
     operationButton.push(document.createElement('button'));
     operationButton[i].textContent=operationsStr[i];
     operations.appendChild(operationButton[i]);
-    operationButton[i].addEventListener('click',addOperationOnCLick);
+    operationButton[i].addEventListener('click', addOperationOnCLick);
 }
 const leftCurlButton=document.createElement('button');
 const rightCurlButton=document.createElement('button');
@@ -61,3 +59,33 @@ function clearOnClick (e) {
     e.preventDefault();
     display.value='0';
 }
+//store value
+const displayStored = document.querySelector('.stored');
+const storeValueButton = document.createElement('button');
+storeValueButton.textContent = 'Store';
+actions.appendChild(storeValueButton);
+storeValueButton.addEventListener('click',storeOnClick);
+function storeOnClick (e) {
+    e.preventDefault();
+    displayStored.value = display.value;
+}
+//add stored value
+const fromStoreValueButton = document.createElement('button');
+fromStoreValueButton.textContent = 'Get stored';
+actions.appendChild(fromStoreValueButton);
+fromStoreValueButton.addEventListener('click',fromStoreOnClick);
+function fromStoreOnClick (e) {
+    e.preventDefault();
+    display.value += displayStored.value;
+}
+//clear stored value
+const clearStoreValueButton = document.createElement('button');
+clearStoreValueButton.textContent = 'Clear Stored';
+actions.appendChild(clearStoreValueButton);
+clearStoreValueButton.addEventListener('click',clearStoreOnClick);
+function clearStoreOnClick (e) {
+    e.preventDefault();
+    displayStored.value = '0';
+}
+
+
